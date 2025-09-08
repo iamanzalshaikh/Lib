@@ -26,7 +26,7 @@ const Login = () => {
       const response = await axios.post(
         `${serverUrl}/api/auth/login`,
         { email, password },
-        { withCredentials: true } // important for HTTP-only cookie
+        { withCredentials: true } 
       );
 
       toast.success(response.data.message || 'Login successful!');
