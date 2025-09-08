@@ -2,7 +2,7 @@ import Review from "../model/reviewModel.js";
 import Book from "../model/bookModel.js";
 import User from "../model/userModel.js";
 
-// ✅ Member adds a review
+//  Member adds a review
 export const addReview = async (req, res) => {
   try {
     const { bookId, rating, comment } = req.body;
@@ -19,7 +19,7 @@ export const addReview = async (req, res) => {
   }
 };
 
-// ✅ Get all reviews for a book (member or admin)
+//  Get all reviews for a book (member or admin)
 export const getReviewsByBook = async (req, res) => {
   try {
     const { bookId } = req.params;
@@ -30,7 +30,7 @@ export const getReviewsByBook = async (req, res) => {
   }
 };
 
-// ✅ Admin: get all reviews
+//  Admin: get all reviews
 export const getAllReviews = async (req, res) => {
   try {
     const admin = await User.findById(req.userId);
