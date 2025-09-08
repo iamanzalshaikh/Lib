@@ -10,7 +10,7 @@ const MyBooks = () => {
   const [loading, setLoading] = useState(false);
   const { serverUrl } = useContext(AuthContext);
 
-  // 📌 Fetch books borrowed by current user only
+  //  Fetch books borrowed by current user only
   const fetchBorrowedBooks = async () => {
     try {
       setLoading(true);
@@ -27,7 +27,7 @@ const MyBooks = () => {
     }
   };
 
-  // 📌 Return a book
+  //  Return a book
   const returnBook = async (id) => {
     if (!window.confirm("Are you sure you want to return this book?")) return;
     
@@ -43,7 +43,7 @@ const MyBooks = () => {
     }
   };
 
-  // 📌 Format date for display
+  // Format date for display
   const formatDate = (dateString) => {
     if (!dateString) return "N/A";
     const date = new Date(dateString);
