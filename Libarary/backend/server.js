@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 3000;
 
 // ✅ CORS configuration
 app.use(cors({
-    origin: "https://librarymanagementsy.netlify.app/", 
+    origin: "https://lib-1-8ghg.onrender.com", 
     credentials: true,              
 }));
 
