@@ -11,7 +11,6 @@ const AllBooks = () => {
   const [filter, setFilter] = useState("available");
   const { serverUrl } = useContext(AuthContext);
 
-  // 📌 Fetch books with filter
   const fetchBooks = async () => {
     try {
       setLoading(true);
@@ -31,7 +30,7 @@ const AllBooks = () => {
     }
   };
 
-  // 📌 Search books
+  //  Search books
   const searchBooks = async () => {
     if (!searchQuery.trim()) return fetchBooks();
     
@@ -53,7 +52,7 @@ const AllBooks = () => {
     }
   };
 
-  // 📌 Borrow a book
+  // Borrow a book
   const borrowBook = async (id) => {
     try {
       await axios.put(`${serverUrl}/api/member/books/${id}/borrow`, {}, {
@@ -68,7 +67,7 @@ const AllBooks = () => {
     }
   };
 
-  // 📌 Reserve a book
+  //  Reserve a book
   const reserveBook = async (id) => {
     try {
       await axios.put(`${serverUrl}/api/member/books/${id}/reserve`, {}, {
@@ -82,7 +81,7 @@ const AllBooks = () => {
     }
   };
 
-  // 📌 Handle search on Enter key
+  //  Handle search on Enter key
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       searchBooks();
