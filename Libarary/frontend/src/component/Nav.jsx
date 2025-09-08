@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Nav = () => {
   const { userdata, setUserData } = useContext(userDataContext);
-  const { serverUrl } = useContext(AuthContext); // ✅ Use serverUrl from AuthContext
+  const { serverUrl } = useContext(AuthContext);  
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
@@ -16,7 +16,7 @@ const Nav = () => {
   const handleLogout = async () => {
     try {
       const response = await axios.post(
-        `${serverUrl}/api/auth/logout`, // ✅ Using serverUrl now
+        `${serverUrl}/api/auth/logout`, 
         {},
         { withCredentials: true }
       );
