@@ -26,12 +26,13 @@ export const signup = async (req, res) => {
 
     const token = genToken(user._id);
 
-   res.cookie("token", token, {
+res.cookie("token", token, {
   httpOnly: true,
-  sameSite: "lax",  // works for localhost
-  secure: false,    // must be false for HTTP
-  maxAge: 7 * 24 * 60 * 60 * 1000,
+  sameSite: "none", // if frontend and backend are on different domains
+  secure: true,     // HTTPS required
+  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
 });
+
 
     res.status(201).json({
       message: "Signup successful",
@@ -56,12 +57,12 @@ export const login = async (req, res) => {
 
     const token = genToken(user._id);
 
-    res.cookie("token", token, {
-      httpOnly: true,
-     sameSite: "lax",   // works on localhost
-  secure: false, 
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+ res.cookie("token", token, {
+  httpOnly: true,
+  sameSite: "none", // if frontend and backend are on different domains
+  secure: true,     // HTTPS required
+  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+});
 
     res.status(200).json({
       message: "Login successful",
@@ -76,10 +77,11 @@ export const login = async (req, res) => {
 // LOGOUT
 export const logout = (req, res) => {
   try {
-    res.clearCookie("token", {
-      httpOnly: true,
-  sameSite: "lax",   // works on localhost
-  secure: false, 
+   res.cookie("token", "", {
+  httpOnly: true,
+  sameSite: "none", // or "lax" depending on your setup
+  secure: true,     // must match production setting
+  maxAge: 0, 
       path: "/",
     });
     res.status(200).json({ message: "Logout successful" });
