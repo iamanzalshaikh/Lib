@@ -8,7 +8,6 @@ const Home = () => {
 
   useEffect(() => {
     if (!userdata) {
-      // 🚀 redirect guests to login page
       navigate("/login");
     } else if (userdata.role === "admin") {
       navigate("/admin/dashboard");
