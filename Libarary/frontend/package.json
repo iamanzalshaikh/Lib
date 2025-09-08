@@ -2,11 +2,11 @@
   "name": "frontend",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
+"scripts": {
+  "dev": "npx vite",
+  "build": "npx vite build",
+  "preview": "npx vite preview"
+},
   "dependencies": {
     "@octokit/plugin-paginate-rest": "^9.2.2",
     "@octokit/request": "^8.4.1",
