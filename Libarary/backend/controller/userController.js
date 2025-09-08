@@ -1,5 +1,5 @@
 import genToken from "../config/token.js";
-import bcrypt from "bcrypt";
+import bcrypt from 'bcryptjs';
 import User from "../model/userModel.js";
 
 
