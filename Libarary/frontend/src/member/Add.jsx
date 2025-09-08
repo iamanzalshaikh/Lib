@@ -21,7 +21,6 @@ const Add = () => {
           { withCredentials: true }
         );
 
-        // Remove duplicates using Map
         const uniqueBooks = Array.from(
           new Map(data.map(book => [book._id, book])).values()
         );
