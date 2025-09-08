@@ -22,10 +22,11 @@ const PORT = process.env.PORT || 3000;
 
 // ✅ CORS configuration
 app.use(cors({
-    origin: "https://lib-1-8ghg.onrender.com", 
-    credentials: true,              
+  origin: "https://lib-1-8ghg.onrender.com", // your frontend
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // include OPTIONS
+  allowedHeaders: ["Content-Type", "Authorization"], // allow JSON + auth
+  credentials: true
 }));
-
 // Middleware
 app.use(express.json());
 app.use(cookieParser()); 
