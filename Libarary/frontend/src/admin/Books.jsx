@@ -14,7 +14,6 @@ const AllBooks = () => {
   const [editBook, setEditBook] = useState(null);
   const { serverUrl } = useContext(AuthContext);
 
-  // 📌 Fetch books
   const fetchBooks = async () => {
     try {
       setLoading(true);
@@ -36,7 +35,7 @@ const AllBooks = () => {
     fetchBooks();
   }, [search, status]);
 
-  // 📌 Delete book
+  //  Delete book
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this book?")) return;
     try {
@@ -54,10 +53,8 @@ const AllBooks = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto p-6">
 
-        {/* Page Header */}
         <h1 className="text-3xl font-bold text-gray-900 mb-4">Books Management</h1>
 
-        {/* Add New Book Button */}
         <div className="mb-6">
           <button
             className="bg-blue-600 text-white px-5 py-2 rounded-lg shadow-md hover:bg-blue-700 transition-colors flex items-center gap-2 font-medium"
