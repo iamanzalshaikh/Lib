@@ -1,9 +1,9 @@
 // config/cloudinary.js
 import { v2 as cloudinary } from 'cloudinary';
 import fs from 'fs';
-import 'dotenv/config'; // Make sure dotenv is loaded
+import 'dotenv/config'; 
 
-// Debug: Check if environment variables are loaded
+
 console.log('🔍 Checking Cloudinary Environment Variables:');
 console.log('CLOUDINARY_CLOUD_NAME:', process.env.CLOUDINARY_CLOUD_NAME);
 console.log('CLOUDINARY_API_KEY:', process.env.CLOUDINARY_API_KEY);
@@ -16,7 +16,7 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Function to Upload File to Cloudinary
+
 const uploadOnCloudinary = async (filePath) => {
     try {
         if (!filePath) {
