@@ -1,7 +1,7 @@
 import { uploadOnCloudinary } from "../config/cloudinary.js";
 import Book from "../model/bookModel.js";
 import User from "../model/userModel.js";
-// ➕ Add new book
+//  Add new book
 export const addBook = async (req, res) => {
   try {
     const { title, author, ISBN  } = req.body;
@@ -25,12 +25,11 @@ export const addBook = async (req, res) => {
   }
 };
 
-// ✏️ Update book details
+//  Update book details
 export const updateBook = async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Build update object
     const updateData = { ...req.body };
 
     // If a new cover image is uploaded
@@ -49,7 +48,7 @@ export const updateBook = async (req, res) => {
   }
 };
 
-// ❌ Delete book
+// Delete book
 export const deleteBook = async (req, res) => {
   try {
     const { id } = req.params;
@@ -63,7 +62,7 @@ export const deleteBook = async (req, res) => {
   }
 };
 
-// 📚 View all books (Admin can see borrowed or available)
+//  View all books (Admin can see borrowed or available)
 export const getAllBooks = async (req, res) => {
   try {
     const { status, query } = req.query;
@@ -108,23 +107,19 @@ export const getAllMembers = async (req, res) => {
 
 export const getDashboard = async (req, res) => {
   try {
-    // req.userId is set by your isAuth middleware
     const user = await User.findById(req.userId);
 
     if (!user || user.role !== "admin") {
       return res.status(403).json({ message: "Access denied. Admin only." });
     }
 
-    // Count total books
+    
     const totalBooks = await Book.countDocuments();
 
-    // Count available books
     const availableBooks = await Book.countDocuments({ availability: "available" });
 
-    // Count borrowed books
     const borrowedBooks = await Book.countDocuments({ availability: "borrowed" });
 
-    // Count total members
     const totalMembers = await User.countDocuments({ role: "member" });
 
     res.status(200).json({
