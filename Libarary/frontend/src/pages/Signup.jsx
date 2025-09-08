@@ -11,7 +11,7 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('member'); // Only member/admin
+  const [role, setRole] = useState('member'); 
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -33,7 +33,6 @@ const Signup = () => {
       console.log('Signup successful:', response.data);
       toast.success(response.data.message || 'Signup successful!');
 
-      // Fetch current user immediately
       try {
         const currentUser = await getCurrentUser();
         setuserdata(currentUser);
