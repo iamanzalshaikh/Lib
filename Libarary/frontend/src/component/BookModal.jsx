@@ -29,7 +29,7 @@ const BookModal = ({ close, fetchBooks, editBook }) => {
       });
 
       if (file) {
-        data.append("coverImage", file); // ✅ must match multer field name
+        data.append("coverImage", file); 
       }
 
       let res;
@@ -55,7 +55,7 @@ const BookModal = ({ close, fetchBooks, editBook }) => {
 
       fetchBooks();
       close();
-      setFile(null); // ✅ reset file
+      setFile(null);  
     } catch (err) {
       console.error("Book save error:", err.response?.data || err.message);
       toast.error("Error saving book");
