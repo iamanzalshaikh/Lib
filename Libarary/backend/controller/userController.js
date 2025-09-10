@@ -75,13 +75,14 @@ export const login = async (req, res) => {
 // LOGOUT
 export const logout = (req, res) => {
   try {
-  res.cookie("token", token, {
+res.cookie("token", "", {
   httpOnly: true,
-  sameSite: "none",   // cross-site (Netlify → Render)
-  secure: true,       // ✅ required for production HTTPS
-  maxAge: 7 * 24 * 60 * 60 * 1000, 
-      path: "/",
-    });
+  sameSite: "none",
+  secure: true,
+  expires: new Date(0), // immediately expire
+  path: "/",
+});
+
     res.status(200).json({ message: "Logout successful" });
   } catch (error) {
     console.error("Logout error:", error);
