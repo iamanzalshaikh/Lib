@@ -22,10 +22,10 @@ const PORT = process.env.PORT || 3000;
 
 // ✅ CORS configuration
 app.use(cors({
-  origin: "https://officemanagment.netlify.app",  // ✅ correct frontend
+  origin: "https://lib-1-8ghg.onrender.com", // ✅ your frontend on Render
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
+  credentials: true, // ✅ allow cookies
 }));
 
 // Middleware
