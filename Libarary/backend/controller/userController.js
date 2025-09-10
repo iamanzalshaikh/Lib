@@ -28,11 +28,10 @@ export const signup = async (req, res) => {
 
 res.cookie("token", token, {
   httpOnly: true,
-  sameSite: "none", // if frontend and backend are on different domains
-   secure: false,    // HTTPS required
-  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  sameSite: "none",   // cross-site (Netlify → Render)
+  secure: true,       // ✅ required for production HTTPS
+  maxAge: 7 * 24 * 60 * 60 * 1000, 
 });
-
 
     res.status(201).json({
       message: "Signup successful",
@@ -59,11 +58,10 @@ export const login = async (req, res) => {
 
  res.cookie("token", token, {
   httpOnly: true,
-  sameSite: "none", // if frontend and backend are on different domains
-  secure: false,   // HTTPS required
-  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  sameSite: "none",   // cross-site (Netlify → Render)
+  secure: true,       // ✅ required for production HTTPS
+  maxAge: 7 * 24 * 60 * 60 * 1000, 
 });
-
     res.status(200).json({
       message: "Login successful",
       user: { id: user._id, name: user.name, email: user.email, role: user.role },
@@ -77,11 +75,11 @@ export const login = async (req, res) => {
 // LOGOUT
 export const logout = (req, res) => {
   try {
-   res.cookie("token", "", {
+  res.cookie("token", token, {
   httpOnly: true,
-  sameSite: "none", // or "lax" depending on your setup
-  secure: false,     // must match production setting
-  maxAge: 0, 
+  sameSite: "none",   // cross-site (Netlify → Render)
+  secure: true,       // ✅ required for production HTTPS
+  maxAge: 7 * 24 * 60 * 60 * 1000, 
       path: "/",
     });
     res.status(200).json({ message: "Logout successful" });
