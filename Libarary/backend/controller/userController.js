@@ -29,7 +29,7 @@ export const signup = async (req, res) => {
 res.cookie("token", token, {
   httpOnly: true,
   sameSite: "none", // if frontend and backend are on different domains
-  secure: true,     // HTTPS required
+   secure: false,    // HTTPS required
   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
 });
 
@@ -60,7 +60,7 @@ export const login = async (req, res) => {
  res.cookie("token", token, {
   httpOnly: true,
   sameSite: "none", // if frontend and backend are on different domains
-  secure: true,     // HTTPS required
+  secure: false,   // HTTPS required
   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
 });
 
@@ -80,7 +80,7 @@ export const logout = (req, res) => {
    res.cookie("token", "", {
   httpOnly: true,
   sameSite: "none", // or "lax" depending on your setup
-  secure: true,     // must match production setting
+  secure: false,     // must match production setting
   maxAge: 0, 
       path: "/",
     });
