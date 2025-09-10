@@ -21,7 +21,7 @@ export const signup = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      role,
+    
     });
 
     const token = genToken(user._id);
